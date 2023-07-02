@@ -1,0 +1,52 @@
+.mainAlt{
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.Altitude{
+    height:200px;
+    width: 50px;
+    border: 2px solid black;
+display: flex;
+flex-direction: column;
+align-items: center;
+/* justify-content: space-between; */
+position: relative;
+background-color: rgb(126, 134, 146);
+opacity: 1;
+font-weight: 700;
+}
+
+.heightInAlt0{
+    position: absolute;
+    bottom: 0%;
+}
+
+.heightInAlt1{
+    position: absolute;
+    bottom: 33%;
+    transform: translatey(60%);
+}
+
+.heightInAlt2{
+    position: absolute;
+    transform: translatey(60%);
+    bottom: 66%;
+}
+
+.heightInAlt3{
+    position: absolute;
+    bottom: 100%;
+    transform: translatey(100%);
+}
+
+
+.marker{
+    border: 2px solid black;
+    width: 70px;
+    position: relative; 
+}

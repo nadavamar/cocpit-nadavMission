@@ -1,0 +1,22 @@
+.guidesBoard{
+   height: 20rem;
+   background-color: rgb(150, 156, 165);
+  width: 850px;
+  opacity: 0.9;
+  
+    
+}
+
+.guidesBoard{
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.buttons{
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   margin-top: 25px;
+ 
+}

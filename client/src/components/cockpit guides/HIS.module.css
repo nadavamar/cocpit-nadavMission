@@ -1,0 +1,46 @@
+.mainHis{
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgb(126, 134, 146);
+
+}
+
+.number{
+    position: absolute;
+}
+
+.his0{
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.his90{
+   right: 5px;
+   transform: translatey(-5%);
+}
+
+
+.his180{
+     bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.his270{
+   left: 5px;
+   transform: translatey(-5%);
+}
+
+.p{
+    font-size: small;
+    max-width: 100px;
+}

@@ -1,0 +1,16 @@
+.mainAdi{
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+justify-content: center;
+background-color: rgb(126, 134, 146);
+
+}
+
+.p{
+    font-weight: 700;
+}

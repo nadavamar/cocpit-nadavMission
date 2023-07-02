@@ -1,0 +1,11 @@
+.mainDiv{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://fullfatthings-keyaero.b-cdn.net/sites/keyaero/files/inline-images/Spit_4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
