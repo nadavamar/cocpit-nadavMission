@@ -25,11 +25,12 @@ export default function Adi() {
       backgroundColorA = "green";
       break;
   }
-//backgroundColor: ` ${backgroundColorA}`
+
+console.log(backgroundColorA);
   return (
     <div
       className={classes.mainAdi}
-      style={{backgroundColor: ` ${backgroundColorA}`, background:`${backgroundColorA.includes("li") ? backgroundColorA : ""} `}}
+      style={{backgroundColor: ` ${ myctx.ADI!=0 ? backgroundColorA: ""}`, background:`${backgroundColorA.includes("li") ? backgroundColorA : ""} `}}
     >
       {!DefaultColor &&  adiBG }
     </div>

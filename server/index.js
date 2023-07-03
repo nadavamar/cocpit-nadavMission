@@ -1,55 +1,100 @@
-const express = require("express");
-const readline = require("readline");
-const pressAnyKey = require("press-any-key");
-const { Server } = require("socket.io");
-const http = require("http");
-const cors = require("cors");
+import readline from 'node:readline/promises';
+import { Server } from 'socket.io';
+import http from 'node:http';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-const ALTITUDE = "ALTITUDE: ";
-const HIS = "HIS: ";
-const ADI = "ADI: ";
+const server = http.createServer();
 
-const app = express();
-
-app.use(cors());
-
-const container = {
-  altitude: null,
-  HIS: null,
-  ADI: null,
-};
-const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: true,
-    methods: ["GET", "POST"],
-  },
+    methods: ['GET', 'POST']
+  }
 });
 
-io.on("connection", (socket) => {
-  socket.broadcast.emit("receive_message", container);
+server.listen(3001);
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-rl.question(ALTITUDE, (alt) => {
-  container.altitude = alt;
+while (true) {
+  const altitude = await rl.question('ALTITUDE: '),
+    HIS = await rl.question('HIS: '),
+    ADI = await rl.question('ADI: '),
+    areYouSure = await rl.question('Are you sure? (Y/n) ');
 
-  rl.question(HIS, (his) => {
-    container.HIS = his;
-
-    rl.question(ADI, (adi) => {
-      container.ADI = adi;
-         io.emit("receive_message", container);
-         rl.close();
-     
+  if (areYouSure !== 'n') {
+    io.emit('message', {
+      altitude,
+      HIS,
+      ADI
     });
-  });
-});
+    console.log('Message has been sent');
+  }
+}
 
+/*****************/
 
-server.listen(3001, () => {
-  // console.log("Server is running on port 3001");
-});
+// const readline = require('readline');
+
+// import express from "express";
+// import pressAnyKey from "press-any-key";
+// import { Server } from "socket.io";
+// import http from "http";
+// import cors from "cors";
+// import inquirer from "inquirer";
+
+// const ALTITUDE = "ALTITUDE: ";
+// const HIS = "HIS: ";
+// const ADI = "ADI: ";
+
+// const app = express();
+
+// app.use(cors());
+
+// const container = {
+//   altitude: null,
+//   HIS: null,
+//   ADI: null,
+// };
+// const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: true,
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+// io.on("connection", (socket) => {
+//   socket.broadcast.emit("receive_message", container);
+// });
+
+// inquirer
+//   .prompt([
+//     {
+//       type: "input",
+//       name: "altitude",
+//       message: ALTITUDE,
+//     },
+//     {
+//       type: "input",
+//       name: "HIS",
+//       message: HIS,
+//     },
+//     {
+//       type: "input",
+//       name: "ADI",
+//       message: ADI,
+//     },
+//   ])
+//   .then((answers) => {
+//     container.altitude = answers.altitude;
+//     container.HIS = answers.HIS;
+//     container.ADI = answers.ADI;
+//     io.emit("receive_message", container);
+//   });
+
+// server.listen(3001, () => {
+//   // console.log("Server is running on port 3001");
+// });

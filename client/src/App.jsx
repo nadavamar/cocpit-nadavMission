@@ -9,9 +9,9 @@ const socket = io.connect("http://localhost:3001");
 function App() {
   const [messageRecived, setMessageReceived] = useState("");
 
-
   useEffect(() => {
-  socket.on("receive_message", (data) => {
+    
+  socket.on("message", (data) => {
     
    setMessageReceived(data)
   });
